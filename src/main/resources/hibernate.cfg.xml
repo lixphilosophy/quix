@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+  "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.password">${db.password}</property>
+    <property name="hibernate.connection.username">${db.username}</property>
+    <property name="hibernate.connection.url">${db.url}</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">true</property>
+
+    <property name="hibernate.cache.use_second_level_cache">true</property>
+    <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+    <property name="hibernate.hikari.minimumIdle">10</property>
+    <property name="hibernate.hikari.connectionTimeout">10000</property>
+    <property name="hibernate.hikari.maximumPoolSize">30</property>
+    <property name="hibernate.hikari.idleTimeout">30000</property>
+
+    <mapping class="quix.domain.UserInfo"></mapping>
+    <mapping class="quix.domain.QuizInfo"></mapping>
+    <mapping class="quix.domain.Question"></mapping>
+    <mapping class="quix.domain.Choice"></mapping>
+    <mapping class="quix.domain.UserSubmission"></mapping>
+    <mapping class="quix.domain.UserAnswer"></mapping>
+  </session-factory>
+</hibernate-configuration>
